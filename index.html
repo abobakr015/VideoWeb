@@ -19,7 +19,9 @@
             padding: 20px 0;
         }
 
-        .video-container {
+        .video-container,
+        .pdf-container,
+        .image-container {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -33,7 +35,9 @@
             max-width: 600px;
         }
 
-        .video-container h3 {
+        .video-container h3,
+        .pdf-container h3,
+        .image-container h3 {
             margin: 0;
             font-size: 1.2rem;
             color: #0073e6;
@@ -55,14 +59,16 @@
             transform: scale(1.05);
         }
 
-        .interaction-buttons {
+        .interaction-buttons,
+        .pdf-buttons {
             display: flex;
             justify-content: space-around;
             width: 100%;
             margin-top: 10px;
         }
 
-        .like-button {
+        .like-button,
+        .pdf-button {
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
@@ -79,7 +85,8 @@
             background-color: #ff4d4d;
         }
 
-        .like-button:hover {
+        .like-button:hover,
+        .pdf-button:hover {
             background-color: #005bb5;
         }
 
@@ -143,6 +150,45 @@
         .comments-list button.delete-btn:hover {
             background-color: #cc0000;
         }
+
+        .pdf-container a {
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .pdf-container a:hover {
+            text-decoration: underline;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .image-buttons a {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0073e6;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .image-buttons a:hover {
+            background-color: #005bb5;
+        }
     </style>
 </head>
 
@@ -166,6 +212,7 @@
         <ul class="comments-list" id="comments-list-1"></ul>
     </div>
 
+    <!-- إضافة الفيديوهات الجديدة -->
     <div class="video-container">
         <h3>الفيديو الثاني</h3>
         <video controls>
@@ -242,6 +289,67 @@
         <ul class="comments-list" id="comments-list-5"></ul>
     </div>
 
+    <!-- إضافة ملفات PDF -->
+    <div class="pdf-container">
+        <h3>الفصل الاول أمن معلومات</h3>
+        <a href="files/الفصل الاول.pdf" download class="pdf-button">تنزيل الفصل الأول</a>
+    </div>
+
+    <div class="pdf-container">
+        <h3>الفصل الثاني أمن معلومات</h3>
+        <a href="files/الفصل الثاني.pdf" download class="pdf-button">تنزيل الفصل الثاني</a>
+    </div>
+    <div class="pdf-container">
+        <h3>المحاضرة الاولى بايثون عملي</h3>
+        <a href="files/المحاضرة الأولى - بايثون عملي.pdf" download class="pdf-button"> تنزيل المحاضرة الأولى</a>
+    </div>
+    <div class="pdf-container">
+        <h3>المحاضرة الثانية بايثون عملي</h3>
+        <a href="files/المحاضرة الثانية - بايثون عملي.pdf" download class="pdf-button"> تنزيل المحاضرة الثانية</a>
+    </div>
+    <div class="pdf-container">
+        <h3>المحاضرة الثالثة بايثون عملي</h3>
+        <a href="files/المحاضرة الثالثة.pdfملي.pdf" download class="pdf-button"> تنزيل المحاضرة الثالثة</a>
+    </div>
+    <div class="pdf-container">
+        <h3>المحاضرة الرابعة بايثون عملي</h3>
+        <a href="files/المحاضرة الثالثة.pdfملي.pdf" download class="pdf-button"> تنزيل المحاضرة الرابعة</a>
+    </div>
+    
+    <div class="pdf-container">
+        <h3>أمن معلومات عملي الامحاضرة 1</h3>
+        <a href="files/المحاضرة الاولى.pdf" download class="pdf-button">تنزيل المحاضرة الاولى</a>
+    </div>
+    <div class="pdf-container">
+        <h3>أمن معلومات عملي الامحاضرة 2</h3>
+        <a href="files/المحاضرة الثانية.pdf.pdf" download class="pdf-button">تنزيل المحاضرة الثانية</a>
+    </div>
+    <div class="pdf-container">
+        <h3>أمن معلومات عملي الامحاضرة 3</h3>
+        <a href="files/المحاضرة الثالثة.pdf" download class="pdf-button">تنزيل المحاضرة الثالثة</a>
+    </div>
+    <div class="pdf-container">
+        <h3>مقرر بايثون نظري</h3>
+        <a href="files/المقرر-2.pdf" download class="pdf-button">تنزيل المقرر</a>
+    </div>
+
+    <!-- إضافة صور -->
+    <div class="image-container">
+        <h3>اوامر التجاهل المطلوبة</h3>
+        <img src="images/T.jpg" alt="صورة 1">
+        <div class="image-buttons">
+            <a href="code-snapshot.png" download>تنزيل صورة اوامر التجاهل</a>
+        </div>
+    </div>
+
+    <!-- <div class="image-container">
+        <h3>الصورة الثاني</h3>
+        <img src="code-snapshot.png" alt="صورة 2">
+        <div class="image-buttons">
+            <a href="code-snapshot.png" download>تنزيل الصورة 2</a>
+        </div>
+    </div> -->
+
     <script>
         // تحميل الإعجابات وحالة الإعجاب من localStorage
         function loadLikes(videoId) {
@@ -280,12 +388,10 @@
             let liked = localStorage.getItem(`liked-${videoId}`) === 'true';
 
             if (liked) {
-                // إذا كان معجب بالفعل
                 likeButton.classList.remove('active');
                 likeCount--;
                 localStorage.setItem(`liked-${videoId}`, 'false');
             } else {
-                // إذا لم يكن معجب
                 likeButton.classList.add('active');
                 likeCount++;
                 localStorage.setItem(`liked-${videoId}`, 'true');
@@ -308,7 +414,6 @@
                 `;
                 commentsList.appendChild(newComment);
 
-                // حفظ التعليقات في localStorage
                 let comments = JSON.parse(localStorage.getItem(`comments-${videoId}`)) || [];
                 comments.push(commentText);
                 localStorage.setItem(`comments-${videoId}`, JSON.stringify(comments));
@@ -343,6 +448,3 @@
 </body>
 
 </html>
-
-
-
