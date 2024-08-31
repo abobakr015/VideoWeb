@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فيديوهات إدارة المشاريع عملي</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            color: #333;
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .video-container h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #0073e6;
+            text-align: center;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            border: 2px solid #0073e6;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, filter 0.3s;
+            filter: grayscale(50%);
+        }
+
+        video:hover {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .interaction-buttons {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .like-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0073e6;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .like-button.active {
+            background-color: #ff4d4d;
+        }
+
+        .like-button:hover {
+            background-color: #005bb5;
+        }
+
+        .comment-section {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .comment-section input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .comment-section button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0073e6;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .comment-section button:hover {
+            background-color: #005bb5;
+        }
+
+        .comments-list {
+            margin-top: 10px;
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .comments-list li {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .comments-list button.delete-btn {
+            background-color: #ff4d4d;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .comments-list button.delete-btn:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="video-container">
+        <h3>الفيديو الأول</h3>
+        <video controls>
+            <source src="video/1.mp4" type="video/mp4">
+            متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+        <div class="interaction-buttons">
+            <button class="like-button" id="like-button-1" onclick="toggleLike(1)">
+                👍 <span id="like-count-1">0</span>
+            </button>
+            <button onclick="shareVideo(1)">🔗 مشاركة</button>
+        </div>
+        <div class="comment-section">
+            <input type="text" id="comment-input-1" placeholder="أضف تعليق...">
+            <button onclick="addComment(1)">إرسال</button>
+        </div>
+        <ul class="comments-list" id="comments-list-1"></ul>
+    </div>
+
+    <div class="video-container">
+        <h3>الفيديو الثاني</h3>
+        <video controls>
+            <source src="video/2.mp4" type="video/mp4">
+            متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+        <div class="interaction-buttons">
+            <button class="like-button" id="like-button-2" onclick="toggleLike(2)">
+                👍 <span id="like-count-2">0</span>
+            </button>
+            <button onclick="shareVideo(2)">🔗 مشاركة</button>
+        </div>
+        <div class="comment-section">
+            <input type="text" id="comment-input-2" placeholder="أضف تعليق...">
+            <button onclick="addComment(2)">إرسال</button>
+        </div>
+        <ul class="comments-list" id="comments-list-2"></ul>
+    </div>
+
+    <div class="video-container">
+        <h3>الفيديو الثالث</h3>
+        <video controls>
+            <source src="video/3.mp4" type="video/mp4">
+            متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+        <div class="interaction-buttons">
+            <button class="like-button" id="like-button-3" onclick="toggleLike(3)">
+                👍 <span id="like-count-3">0</span>
+            </button>
+            <button onclick="shareVideo(3)">🔗 مشاركة</button>
+        </div>
+        <div class="comment-section">
+            <input type="text" id="comment-input-3" placeholder="أضف تعليق...">
+            <button onclick="addComment(3)">إرسال</button>
+        </div>
+        <ul class="comments-list" id="comments-list-3"></ul>
+    </div>
+
+    <div class="video-container">
+        <h3>الفيديو الرابع</h3>
+        <video controls>
+            <source src="video/4.mp4" type="video/mp4">
+            متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+        <div class="interaction-buttons">
+            <button class="like-button" id="like-button-4" onclick="toggleLike(4)">
+                👍 <span id="like-count-4">0</span>
+            </button>
+            <button onclick="shareVideo(4)">🔗 مشاركة</button>
+        </div>
+        <div class="comment-section">
+            <input type="text" id="comment-input-4" placeholder="أضف تعليق...">
+            <button onclick="addComment(4)">إرسال</button>
+        </div>
+        <ul class="comments-list" id="comments-list-4"></ul>
+    </div>
+
+    <div class="video-container">
+        <h3>الفيديو الخامس</h3>
+        <video controls>
+            <source src="video/Gitignore.mp4" type="video/mp4">
+            متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+        <div class="interaction-buttons">
+            <button class="like-button" id="like-button-5" onclick="toggleLike(5)">
+                👍 <span id="like-count-5">0</span>
+            </button>
+            <button onclick="shareVideo(5)">🔗 مشاركة</button>
+        </div>
+        <div class="comment-section">
+            <input type="text" id="comment-input-5" placeholder="أضف تعليق...">
+            <button onclick="addComment(5)">إرسال</button>
+        </div>
+        <ul class="comments-list" id="comments-list-5"></ul>
+    </div>
+
+    <script>
+        // تحميل الإعجابات وحالة الإعجاب من localStorage
+        function loadLikes(videoId) {
+            const likeCount = localStorage.getItem(`likeCount-${videoId}`) || 0;
+            const liked = localStorage.getItem(`liked-${videoId}`) === 'true';
+
+            document.getElementById(`like-count-${videoId}`).textContent = likeCount;
+            const likeButton = document.getElementById(`like-button-${videoId}`);
+            if (liked) {
+                likeButton.classList.add('active');
+            } else {
+                likeButton.classList.remove('active');
+            }
+        }
+
+        // تحميل التعليقات من localStorage
+        function loadComments(videoId) {
+            const comments = JSON.parse(localStorage.getItem(`comments-${videoId}`)) || [];
+            const commentsList = document.getElementById(`comments-list-${videoId}`);
+
+            comments.forEach((comment, index) => {
+                const newComment = document.createElement('li');
+                newComment.innerHTML = `
+                    ${comment}
+                    <button class="delete-btn" onclick="deleteComment(${videoId}, ${index})">حذف</button>
+                `;
+                commentsList.appendChild(newComment);
+            });
+        }
+
+        // تبديل حالة الإعجاب وتحديث العداد
+        function toggleLike(videoId) {
+            const likeButton = document.getElementById(`like-button-${videoId}`);
+            const likeCountElement = document.getElementById(`like-count-${videoId}`);
+            let likeCount = parseInt(likeCountElement.textContent);
+            let liked = localStorage.getItem(`liked-${videoId}`) === 'true';
+
+            if (liked) {
+                // إذا كان معجب بالفعل
+                likeButton.classList.remove('active');
+                likeCount--;
+                localStorage.setItem(`liked-${videoId}`, 'false');
+            } else {
+                // إذا لم يكن معجب
+                likeButton.classList.add('active');
+                likeCount++;
+                localStorage.setItem(`liked-${videoId}`, 'true');
+            }
+
+            likeCountElement.textContent = likeCount;
+            localStorage.setItem(`likeCount-${videoId}`, likeCount);
+        }
+
+        // إضافة تعليق وحفظه في localStorage
+        function addComment(videoId) {
+            const commentInput = document.getElementById(`comment-input-${videoId}`);
+            const commentText = commentInput.value;
+            if (commentText) {
+                const commentsList = document.getElementById(`comments-list-${videoId}`);
+                const newComment = document.createElement('li');
+                newComment.innerHTML = `
+                    ${commentText}
+                    <button class="delete-btn" onclick="deleteComment(${videoId}, ${commentsList.children.length})">حذف</button>
+                `;
+                commentsList.appendChild(newComment);
+
+                // حفظ التعليقات في localStorage
+                let comments = JSON.parse(localStorage.getItem(`comments-${videoId}`)) || [];
+                comments.push(commentText);
+                localStorage.setItem(`comments-${videoId}`, JSON.stringify(comments));
+
+                commentInput.value = '';
+            } else {
+                alert('يرجى كتابة تعليق قبل الإرسال.');
+            }
+        }
+
+        // حذف تعليق وتحديث localStorage
+        function deleteComment(videoId, index) {
+            let comments = JSON.parse(localStorage.getItem(`comments-${videoId}`)) || [];
+            comments.splice(index, 1);
+            localStorage.setItem(`comments-${videoId}`, JSON.stringify(comments));
+            loadComments(videoId);
+        }
+
+        // مشاركة الفيديو (توضح تنبيه فقط)
+        function shareVideo(videoId) {
+            alert('تم مشاركة الفيديو ' + videoId);
+        }
+
+        // تحميل البيانات عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function () {
+            for (let i = 1; i <= 5; i++) {
+                loadLikes(i);
+                loadComments(i);
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+
+
